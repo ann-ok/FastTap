@@ -1,0 +1,15 @@
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\bin\Debug\Fast Tap.exe.config
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\bin\Debug\Fast Tap.exe
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\bin\Debug\Fast Tap.pdb
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap.csprojAssemblyReference.cache
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\MainWindow.g.cs
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\App.g.cs
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap_MarkupCompile.cache
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap_MarkupCompile.lref
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\MainWindow.baml
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap.g.resources
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast_Tap.Properties.Resources.resources
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap.csproj.GenerateResource.cache
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap.csproj.CoreCompileInputs.cache
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap.exe
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap.pdb

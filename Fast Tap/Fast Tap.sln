@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fast Tap", "Fast Tap.csproj", "{366AFE75-3EB5-4674-9DB7-68F57E63DCBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{366AFE75-3EB5-4674-9DB7-68F57E63DCBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{366AFE75-3EB5-4674-9DB7-68F57E63DCBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{366AFE75-3EB5-4674-9DB7-68F57E63DCBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{366AFE75-3EB5-4674-9DB7-68F57E63DCBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {294BE5BF-2633-49DA-B1BF-0C5E2DC0A017}
+	EndGlobalSection
+EndGlobal
