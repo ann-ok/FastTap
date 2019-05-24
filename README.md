@@ -1,0 +1,2 @@
+# FastTap
+Сlicker game
