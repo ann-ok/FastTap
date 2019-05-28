@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Fast_Tap.Monster">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAQAAAgAAAAAAABAIAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Monster.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Fast_Tap.BossMonster">
+    <Position X="0.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQQAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Boss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fast_Tap.BonusMonster">
+    <Position X="0.5" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BonusMonster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fast_Tap.Creature">
+    <Position X="4.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAgAAAAAAQAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Creature.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Fast_Tap.Pet">
+    <Position X="3.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fast_Tap.Person">
+    <Position X="5.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAQCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Fast_Tap.IAction">
+    <Position X="2.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IAction.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
