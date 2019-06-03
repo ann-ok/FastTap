@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Anna\\YandexDisk\\Учеба\\Учебная практика\\Part3\\FastTapLibrary\\FastTapLibrary.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Anna\\YandexDisk\\Учеба\\Учебная практика\\Part3\\FastTapLibrary\\FastTapLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Anna\\YandexDisk\\Учеба\\Учебная практика\\Part3\\FastTapLibrary\\FastTapLibrary.csproj",
+        "projectName": "FastTapLibrary",
+        "projectPath": "C:\\Users\\Anna\\YandexDisk\\Учеба\\Учебная практика\\Part3\\FastTapLibrary\\FastTapLibrary.csproj",
+        "packagesPath": "C:\\Users\\Anna\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Anna\\YandexDisk\\Учеба\\Учебная практика\\Part3\\FastTapLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Anna\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
