@@ -5,6 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fast_Tap"
         mc:Ignorable="d"
-        Title="Fast Tap" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="Icon.ico"/>
-
+        Title="Fast Tap" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="Icon.ico">
+<Grid>
+<StackPanel Margin="10">
+    <Rectangle
+                Name="MyRectangle"
+                Width="100" 
+                Height="100"
+                Fill="Blue">
+        <Rectangle.Triggers>
+            <!-- Animates the rectangle's opacity. -->
+            <EventTrigger RoutedEvent="Rectangle.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                                    Storyboard.TargetName="MyRectangle" 
+                                    Storyboard.TargetProperty="Opacity"
+                                    From="1.0" To="0.0" Duration="0:0:5" 
+                                    AutoReverse="True" RepeatBehavior="Forever" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Rectangle.Triggers>
+    </Rectangle>
+</StackPanel>
+</Grid>
+    </Window>
         

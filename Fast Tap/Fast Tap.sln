@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fast Tap", "Fast Tap.csproj", "{366AFE75-3EB5-4674-9DB7-68F57E63DCBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastTapLibrary", "..\FastTapLibrary\FastTapLibrary.csproj", "{74C97A1C-885B-47AB-AB67-6638E88A4066}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastTapLibraryTests", "..\FastTapLibraryTests\FastTapLibraryTests.csproj", "{919B69B2-62E3-4721-B43F-DF63B61D7C6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{366AFE75-3EB5-4674-9DB7-68F57E63DCBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{366AFE75-3EB5-4674-9DB7-68F57E63DCBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{366AFE75-3EB5-4674-9DB7-68F57E63DCBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74C97A1C-885B-47AB-AB67-6638E88A4066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74C97A1C-885B-47AB-AB67-6638E88A4066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74C97A1C-885B-47AB-AB67-6638E88A4066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74C97A1C-885B-47AB-AB67-6638E88A4066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{919B69B2-62E3-4721-B43F-DF63B61D7C6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{919B69B2-62E3-4721-B43F-DF63B61D7C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{919B69B2-62E3-4721-B43F-DF63B61D7C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{919B69B2-62E3-4721-B43F-DF63B61D7C6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
