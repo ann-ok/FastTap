@@ -6,6 +6,6 @@ namespace FastTapLibrary
 {
     interface IInformative
     {
-        void GetInformation();
+        string GetInformation();
     }
 }

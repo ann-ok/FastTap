@@ -42,6 +42,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -89,6 +90,7 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -101,6 +103,57 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\restart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\reward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\wallet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\heroFigure.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\bear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\fox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\lion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\owl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\volf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\wolf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\petFigure.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\funds.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

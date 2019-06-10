@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FastTapLibrary
 {
-    class Game
+    class Game : IInformative
     {
         //private const string heroImage;
         private int maxStage;

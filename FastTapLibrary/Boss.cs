@@ -19,9 +19,9 @@ namespace FastTapLibrary
             criticalDamage = 1.1 * Damage;
         }
 
-        protected override void Attack()
+        public override double Attack()
         {
-            base.Attack();
+            return 0.0;
         }
     }
 }

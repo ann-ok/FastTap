@@ -15,7 +15,7 @@ namespace FastTapLibrary
         public override string ImagePath { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public override double CriticalDamage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         protected override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        protected override Statuses Status { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override Statuses Status { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Pet(string name)
         {
@@ -25,12 +25,12 @@ namespace FastTapLibrary
 
         public void ChangeStatus() => Status = Status == Statuses.Inactive ? Statuses.Active : Statuses.Inactive;
 
-        public override void GetInformation()
+        public override string GetInformation()
         {
             throw new NotImplementedException();
         }
 
-        protected override void Attack()
+        public override double Attack()
         {
             throw new NotImplementedException();
         }

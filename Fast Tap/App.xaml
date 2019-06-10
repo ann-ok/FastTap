@@ -4,6 +4,5 @@
              xmlns:local="clr-namespace:Fast_Tap"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
     </Application.Resources>
 </Application>

@@ -4,47 +4,121 @@ using System.Text;
 
 namespace FastTapLibrary
 {
-    class Hero : StrongCreature
+    public class Hero : StrongCreature
     {
         public int coinsSpent = 0;
         private int maxNumberOfCoins = 0;
-        private SkillPanel skills;
+        public SkillPanel skills;
+        private int opportunityToGetAnAward = 0;
 
-        private int Balance
+        private int Level
         {
-            get { return Balance; }
-            set
+            get
             {
-                Balance = value;
+                int level = skills.GetSumOfSkillLevels();
 
-                if (Balance > maxNumberOfCoins)
-                    maxNumberOfCoins = Balance;
+                if (level % 10 == 0)
+                    opportunityToGetAnAward++;
+
+                return level;
             }
         }
+        private int balance;
+        private double Balance
+        {
+            get { return balance; }
+            set
+            {
+                balance = (int)value;
+
+                if (balance > maxNumberOfCoins)
+                    maxNumberOfCoins = balance;
+            }
+        }
+        private double healthIndicator;
+        protected double HealthIndicator
+        {
+            get { return healthIndicator; }
+            set
+            {
+                if (value < 0)
+                {
+                    Status = Statuses.Inactive;
+                    healthIndicator = 0;
+                }
+                else
+                    healthIndicator = value;
+            }
+        }
+
         public override string ImagePath { get; set; }
         public override double CriticalDamage { get; set; }
-        protected override string Name { get; set; }
-        protected override Statuses Status { get; set; }
+
+        private string name;
+        protected override string Name
+        {
+            get => name;
+            set
+            {
+                if (value == "")
+                    throw new Exception("Имя не может быть пустым");
+
+                name = value;
+            }
+        }
+
+        public override Statuses Status { protected get; set; }
 
         public Hero()
         {
+            Name = "Герой";
             Balance = 0;
             skills = new SkillPanel();
-            skills.Add("Health", 100, 1.2);
-            skills.Add("Attack", 16, 1.3);
-            skills.Add("Protection", 0.05, 1.01);
             ImagePath = "";
-
+            HealthIndicator = skills.Health;
+            CriticalDamage = 1.05 * skills.Damage;
+            Status = Statuses.Active;
         }
 
-        public override void GetInformation()
+        public void GetReward(double multiplier)
         {
-            throw new NotImplementedException();
+            Balance += Reward.GetСoins(multiplier);
         }
 
-        protected override void Attack()
+        public void GetReward(int level, double multiplier = 1)
         {
-            throw new NotImplementedException();
+            Balance += Reward.GetСoins(level, multiplier);
+        }
+
+        public override string GetInformation()
+        {
+            return $"Имя героя: {Name}\n" +
+                $"Уровень: {Level}\n" +
+                $"Максимальное количество монет: {maxNumberOfCoins}\n" +
+                $"Монет потрачено: {coinsSpent}\n";
+        }
+
+        public override double Attack()
+        {
+           return (new Random()).NextDouble() <= CriticalChance ? CriticalDamage : skills.Damage;
+        }
+
+        public void LevelUp(string skillName)
+        {
+            Skill skill;
+
+            switch (skillName)
+            {
+                case "Health": skill = skills.Health; break;
+                case "Damage": skill = skills.Damage; break;
+                case "Protection": skill = skills.Protection; break;
+                case "Pet": skill = skills.Pet; break;
+                default:
+                    throw new Exception("Запрос на повышение несуществующего навыка.");
+            }
+
+            Balance -= skill.Cost;
+            skills.LevelUp(skill);
         }
     }
 }

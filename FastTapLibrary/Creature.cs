@@ -1,23 +1,21 @@
-﻿using System;
-
-namespace FastTapLibrary
+﻿namespace FastTapLibrary
 {
     public abstract class Creature
     {
         /// <summary>
         /// Name property.
         /// </summary>
-        protected abstract string Name { get; set; }
+        public abstract string Name { get; protected set; }
 
         /// <summary>
         /// Status property.
         /// </summary>
-        protected abstract Statuses Status { get; set; }
+        public abstract Statuses Status { get; protected set; }
 
         /// <summary>
-        /// Damage to the object.
+        /// Attack method.
         /// </summary>
-        protected abstract void Attack();
+        public abstract double Attack();
     }
 
     /// <summary>

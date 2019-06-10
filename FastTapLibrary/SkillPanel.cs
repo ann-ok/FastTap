@@ -1,37 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace FastTapLibrary
 {
-    class SkillPanel
+    public class SkillPanel
     {
-        private Dictionary<string ,Skill> skills;
+        private readonly Dictionary<string ,Skill> skills;
 
+        public Skill Health
+        {
+            get { return skills["Health"]; }
+        }
+
+        public Skill Damage
+        {
+            get { return skills["Damage"]; }
+        }
+
+        public Skill Protection
+        {
+            get { return skills["Protection"]; }
+        }
+
+        public Skill Pet
+        {
+            get { return skills["Pet"]; }
+        }
+
+        /// <summary>
+        /// Initializes a SkillPanel class object with health, damage, defense, and pet skills.
+        /// </summary>
         public SkillPanel()
         {
-            skills = new Dictionary<string, Skill>();
+            skills = new Dictionary<string, Skill>
+            {
+                { "Health", new Skill(100, 1.2) },
+                { "Damage", new Skill(16, 1.3) },
+                { "Protection", new Skill(0.05, 1.01) },
+                { "Pet", new Skill(50, 1.1) }
+            };
         }
 
-        public void Add(string title, double value, double multiplier)
-        {
-            try
-            {
-                skills.Add(title, new Skill(value, multiplier));
-            }
-            catch
-            {
-                throw new Exception("Ошибка при добавлении навыка.");
-            }
-        }
+        /// <summary>
+        /// The method returns the sum of all skill levels.
+        /// </summary>
+        /// <returns>The sum of skill levels.</returns>
+        public int GetSumOfSkillLevels() => skills.Sum(v => v.Value.Level);
 
-        //переписать с linq
-        public int GetSumOfSkillLevels()
-        {
-            int sum = 0;
-            foreach (var skill in skills)
-                sum += skill.Value.level;
-            return sum;
-        }
+        /// <summary>
+        /// The method allows to increase the level of skill.
+        /// </summary>
+        /// <param name="skill">Skill whose level you need to increase.</param>
+        public void LevelUp(Skill skill) => skill.LevelUp();
     }
 }
