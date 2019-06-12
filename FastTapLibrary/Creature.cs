@@ -10,7 +10,7 @@
         /// <summary>
         /// Status property.
         /// </summary>
-        public abstract Statuses Status { get; protected set; }
+        public abstract Statuses Status { get; set; }
 
         /// <summary>
         /// Attack method.

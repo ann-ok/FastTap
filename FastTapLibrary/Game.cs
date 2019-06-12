@@ -11,25 +11,44 @@ namespace FastTapLibrary
         public bool nextStage = false, prevStage = true;
 
         private int currentStage;
+
         public int CurrentStage
         {
             get { return currentStage; }
             set
             {
-                if (currentStage < 1)
-                    throw new Exception("Этап не может быть меньше 1.");
+                if (value < currentStage)
+                {
+                    prevStage = false;
+                    nextStage = true;
+                }
+                else
+                {
+                    prevStage = true;
+                    nextStage = false;
+                }
 
-                currentStage = value;
+                if (value < 1)
+                    currentStage = 1;
+                else
+                    currentStage = value;
 
                 if (currentStage > maxStage)
                     maxStage = currentStage;
             }
         }
 
-        public Game()
+        public Hero GHero { get; private set; }
+
+        public Monster GMonster { get; private set; }
+
+        public Game(Hero hero)
         {
             currentStage = 1;
             startDateTime = DateTime.Now;
+
+            GHero = hero;
+            GMonster = CreateMonster();
         }
 
         public string GetInformation()
@@ -39,12 +58,50 @@ namespace FastTapLibrary
                 $"Время в игре: {DateTime.Now - startDateTime}\n";
         }
 
-        public void ReturnToPrevStage()
+        public void UpdateStage()
         {
-            if (CurrentStage != 1)
-                CurrentStage--;
+            GHero.HealthIndicator = GHero.Skills.Health;
+            GHero.Status = Statuses.Active;
+            GMonster = CreateMonster();
+            GMonster.Status = Statuses.Active;
+        }
 
-            //герой восстанавливает здоровье
+        private Monster CreateMonster()
+        {
+            if (CurrentStage % 10 == 0)
+                return new Boss(CurrentStage);
+            else if (new Random().NextDouble() <= Monster.BonusChance)
+                return new BonusBoss(CurrentStage);
+            else
+                return new Monster(CurrentStage);
+        }
+
+        public void MonsterAttack()
+        {
+            GHero.HealthIndicator -= GMonster.Attack()*(1 - GHero.Skills.Protection);
+
+            if (GHero.Status == Statuses.Inactive)
+            {
+                if (prevStage == true)
+                    CurrentStage--;
+
+                UpdateStage();
+            }
+        }
+
+        public void HeroAttack()
+        {
+            GMonster.HealthIndicator -= GHero.Attack();
+
+            if (GMonster.Status == Statuses.Inactive)
+            {
+                GHero.GetReward(CurrentStage, GMonster.AwardMultiplier);
+
+                if (prevStage != false)
+                    CurrentStage++;
+
+                UpdateStage();
+            }
         }
     }
 }

@@ -36,8 +36,8 @@ namespace FastTapLibrary
         {
             skills = new Dictionary<string, Skill>
             {
-                { "Health", new Skill(100, 1.2) },
-                { "Damage", new Skill(16, 1.3) },
+                { "Health", new Skill(110, 1.2) },
+                { "Damage", new Skill(18, 1.3) },
                 { "Protection", new Skill(0.1, 1.1) },
                 { "Pet", new Skill(50, 1.1) }
             };

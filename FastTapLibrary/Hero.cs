@@ -67,7 +67,7 @@ namespace FastTapLibrary
             }
         }
 
-        public override Statuses Status { get;  protected set; }
+        public override Statuses Status { get; set; }
 
         public Hero(string name, string imagePath)
         {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fast_Tap"
         mc:Ignorable="d"
-        Title="Fast Tap" Height="840" Width="630" WindowStartupLocation="CenterScreen" Icon="Icon.ico" MinHeight="840" MinWidth="600" Foreground="#FF101213" Loaded="Window_Loaded">
+        Title="Fast Tap" Height="840" Width="630" WindowStartupLocation="CenterScreen" Icon="Icon.ico" MinHeight="840" MinWidth="600" Foreground="#FF101213" Loaded="Window_Loaded" Closed="Window_Closed">
     <Window.Background>
         <ImageBrush ImageSource="image/background.jpg" Stretch="UniformToFill"/>
     </Window.Background>
@@ -241,10 +241,12 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" FontSize="16" FontWeight="ExtraLight" VerticalAlignment="Center" HorizontalAlignment="Left"
                                x:Name="NameHealthLabel" Content="Health" Foreground="#FF151111" Height="30" Margin="0,10" Width="53"/>
-                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Текущий уровень" Height="25" Margin="41,0,31,0" Width="42" >
-                    <Label  Content="lvl:" FontSize="14" FontWeight="ExtraLight"/>
-                    <Label x:Name="LvlHealthLabel" FontSize="14" Content="5"/>
-                </StackPanel>
+                <Grid Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTip="Текущий уровень">
+                    <StackPanel  Orientation="Horizontal" Height="25" Width="42" >
+                        <Label  Content="lvl:" FontSize="14" FontWeight="ExtraLight"/>
+                        <Label x:Name="LvlHealthLabel" FontSize="14" Content="500"/>
+                    </StackPanel>
+                </Grid>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" ToolTip="Текущее значение" Margin="23,24,13,0" Grid.RowSpan="2" Width="78">
                     <Label  Content="value:" FontSize="14"  VerticalAlignment="Top" FontWeight="ExtraLight" HorizontalContentAlignment="Center"/>
                     <Label x:Name="CurrentHealthLabel"  Content="100" FontSize="14"/>
@@ -430,7 +432,7 @@
             </Grid>
             <!---->
             <!--Место для монстра-->
-            <Grid>
+            <Grid x:Name="MonsterField" MouseLeftButtonUp="MonsterField_MouseLeftButtonUp" Background="Transparent">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>

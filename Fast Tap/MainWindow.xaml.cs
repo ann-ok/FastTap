@@ -25,9 +25,7 @@ namespace Fast_Tap
     {
         private readonly string startPath = System.IO.Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
 
-        private Hero hero;
         private Game game;
-        private Monster monster;
         private readonly Dictionary<string, Label> healthPanel, damagePanel, protectionPanel, petPanel;
 
         public readonly string music = @"\sound\background.mp3";
@@ -40,6 +38,7 @@ namespace Fast_Tap
             InitializeComponent();
 
             backMusic.Open(new Uri(startPath + music));
+            backMusic.MediaEnded += new EventHandler(Media_Ended);
             backMusic.Play();
 
             //атака монстра
@@ -81,11 +80,8 @@ namespace Fast_Tap
 
         private void MonsterAttackTimer_Tick(object sender, EventArgs e)
         {
-            if (hero.Status == Statuses.Inactive && game.prevStage == true)
-
-            //если статус героя неактивный то бросает на этап назад (только 1 раз)
-            hero.HealthIndicator -= monster.Attack();
-            HeroHealthPB.Value = hero.HealthIndicator;
+            game.MonsterAttack();
+            GameViewUpdate();
         }
 
         //При запуке игры необходимо проверить создан ли персонаж
@@ -102,65 +98,82 @@ namespace Fast_Tap
                 return;
             }
 
-            hero = heroWindow.Hero;
-            game = new Game();
+            game = new Game(heroWindow.Hero);
 
-            monster = CreateMonster();
+            Hero hero = game.GHero;
+
+            HeroNameLabel.Content = hero.Name;
+            HeroImage.Source = new BitmapImage(new Uri(hero.ImagePath));
+
             monsterAttackTimer.Start();
 
-            DataUpdate();
+            GameViewUpdate();
+            HeroViewUpdate();
         }
 
-        private void DataUpdate()
+        private void GameViewUpdate()
         {
             /*Вносим данные на форму*/
 
             //Герой
-            HeroHealthPB.Maximum = hero.HealthIndicator;
-            HeroHealthPB.Value = hero.HealthIndicator;
-
-            HeroNameLabel.Content = hero.Name;
-            HeroLvlLabel.Content = hero.Level;
-            HeroBalanceLabel.Content = hero.Balance;
-            HeroImage.Source = new BitmapImage(new Uri(hero.ImagePath));
-
-            UpdateSkill(hero.Skills.Health);
-            UpdateSkill(hero.Skills.Damage);
-            UpdateSkill(hero.Skills.Protection);
-            UpdateSkill(hero.Skills.Pet);
-
-            //Питомец
-            PetBtn.IsEnabled = false;
-            PetGrid.Opacity = 0.3;
+            HeroHealthPB.Value = game.GHero.HealthIndicator;
+            HeroBalanceUpdate();
 
             //Игра
             StageLabel.Content = game.CurrentStage;
 
             //Монстр
-            MonsterHealthPB.Maximum = monster.HealthIndicator;
+            Monster monster = game.GMonster;
+
+            MonsterHealthPB.Maximum = (int)monster.Health;
             MonsterHealthPB.Value = monster.HealthIndicator;
             MonsterNameLabel.Content = monster.Name;
             MonsterImg.Source = new BitmapImage(monster.Appearance);
             MonsterImg.Width = 150 + game.CurrentStage / 10;
 
+            //Питомец
+            //PetBtn.IsEnabled = false;
+            //PetGrid.Opacity = 0.3;
+
             /*----*/
         }
 
-        private Monster CreateMonster()
+        private void HeroViewUpdate()
         {
-            int stage = game.CurrentStage;
+            Hero hero = game.GHero;
 
-            if (stage % 10 == 0)
-                return new Boss(stage);
-            else if (new Random().NextDouble() <= Monster.BonusChance)
-                return new BonusBoss(stage);
-            else
-                return new Monster(stage);
+            HeroHealthPB.Maximum = hero.Skills.Health;
+            //HeroHealthPB.Value = hero.HealthIndicator;
+
+            HeroLvlLabel.Content = hero.Level;
+
+            HeroBalanceUpdate();
+
+            UpdateSkill(hero.Skills.Health);
+            UpdateSkill(hero.Skills.Damage);
+            UpdateSkill(hero.Skills.Protection);
+            UpdateSkill(hero.Skills.Pet);
+        }
+
+        private void HeroBalanceUpdate()
+        {
+            HeroBalanceLabel.Content = game.GHero.Balance;
+            int balance = int.Parse(HeroBalanceLabel.Content.ToString());
+            HealthBtn.IsEnabled = balance > int.Parse(CostHealthLabel.Content.ToString()) ? true : false;
+            DamageBtn.IsEnabled = balance > int.Parse(CostDamageLabel.Content.ToString()) ? true : false;
+            ProtectionBtn.IsEnabled = balance > int.Parse(CostProtectionLabel.Content.ToString()) ? true : false;
+            PetBtn.IsEnabled = balance > int.Parse(CostPetLabel.Content.ToString()) ? true : false;
         }
 
         private void NextLvlBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (game.prevStage)
+                return;
 
+            game.CurrentStage++;
+            game.UpdateStage();
+
+            GameViewUpdate();
         }
 
         private void RestartBtn_Click(object sender, RoutedEventArgs e)
@@ -189,7 +202,8 @@ namespace Fast_Tap
 
         private void HealthBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            game.GHero.LevelUp("Health");
+            HeroViewUpdate();
         }
 
         private void SettingsBtn_MouseEnter(object sender, MouseEventArgs e)
@@ -206,6 +220,17 @@ namespace Fast_Tap
 
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            backMusic.Stop();
+        }
+
+        private void MonsterField_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            game.HeroAttack();
+            GameViewUpdate();
+        }
+
         private void BuyPetBtn_Click(object sender, RoutedEventArgs e)
         {
 
@@ -217,18 +242,18 @@ namespace Fast_Tap
         /// <param name="panel">Upgradeable skill.</param>
         private void UpdateSkill(Skill skill)
         {
-            Dictionary<string, Label> panel = skill == hero.Skills.Health ? healthPanel
-                : skill == hero.Skills.Damage ? damagePanel
-                : skill == hero.Skills.Protection ? protectionPanel
-                : skill == hero.Skills.Pet ? petPanel
+            Dictionary<string, Label> panel = skill == game.GHero.Skills.Health ? healthPanel
+                : skill == game.GHero.Skills.Damage ? damagePanel
+                : skill == game.GHero.Skills.Protection ? protectionPanel
+                : skill == game.GHero.Skills.Pet ? petPanel
                 : null;
                 
             if (skill is null)
                 throw new Exception("Не удалость распознать навык!");
 
             panel["lvl"].Content = skill.Level;
-            panel["value"].Content = skill.Value;
-            panel["cost"].Content = skill.Cost;
+            panel["value"].Content = (int)skill.Value;
+            panel["cost"].Content = (int)skill.Cost;
             panel["inc"].Content = panel == protectionPanel ? skill.Inc : (int)skill.Inc;
         }
 

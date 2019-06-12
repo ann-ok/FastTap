@@ -23,7 +23,7 @@ namespace FastTapLibrary
 
         public double AwardMultiplier { get; protected set; } = 1;
 
-        public static double BonusChance = 0.05;
+        public static double BonusChance = 0.01;
         public static TimeSpan AttackSpeed = new TimeSpan(0, 0, 1);
 
         private double health;
@@ -35,12 +35,12 @@ namespace FastTapLibrary
 
         public override string Name { get; protected set; }
 
-        public override Statuses Status { get; protected set; }
+        public override Statuses Status { get; set; }
 
-        protected double Health
+        public double Health
         {
             get { return health; }
-            set
+            protected set
             {
                 health = value;
                 HealthIndicator = health;
@@ -52,8 +52,13 @@ namespace FastTapLibrary
             get { return (int)healthIndicator; }
             set
             {
-                healthIndicator = value;
-                Status = healthIndicator < 0 ? Statuses.Inactive : Statuses.Active;
+                if (value < 0)
+                {
+                    Status = Statuses.Inactive;
+                    healthIndicator = 0;
+                }
+                else
+                    healthIndicator = value;
             }
         }
 
