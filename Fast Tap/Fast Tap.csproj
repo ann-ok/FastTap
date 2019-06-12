@@ -61,6 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CharacterCreationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,6 +72,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CharacterCreationWindow.xaml.cs">
+      <DependentUpon>CharacterCreationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -135,25 +142,76 @@
     <Resource Include="image\bear.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="image\fox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\lion.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\owl.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="image\volf.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\wolf.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\petFigure.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\funds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\fox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\lion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\panda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\wolf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FastTapLibrary\FastTapLibrary.csproj">
+      <Project>{74C97A1C-885B-47AB-AB67-6638E88A4066}</Project>
+      <Name>FastTapLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\bonus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\boss1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\boss2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\boss3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\boss4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\boss5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\boss6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\monster1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\monster2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\monster3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\monster4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\monster5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\monster6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\monster7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\monster8.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

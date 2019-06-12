@@ -9,7 +9,7 @@ namespace FastTapLibrary
 
         protected const double CriticalChance = 0.05;
 
-        protected abstract double CriticalDamage { get; set; }
+        protected abstract double CriticalDamage { get; }
 
         public abstract string ImagePath { get; set; }
 

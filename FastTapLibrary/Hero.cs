@@ -8,14 +8,14 @@ namespace FastTapLibrary
     {
         public int coinsSpent = 0;
         private int maxNumberOfCoins = 0;
-        public SkillPanel skills;
+        public SkillPanel Skills { get; private set; }
         private int opportunityToGetAnAward = 0;
 
-        private int Level
+        public int Level
         {
             get
             {
-                int level = skills.GetSumOfSkillLevels();
+                int level = Skills.GetSumOfSkillLevels();
 
                 if (level % 10 == 0)
                     opportunityToGetAnAward++;
@@ -24,7 +24,7 @@ namespace FastTapLibrary
             }
         }
         private int balance;
-        private double Balance
+        public double Balance
         {
             get { return balance; }
             set
@@ -36,9 +36,9 @@ namespace FastTapLibrary
             }
         }
         private double healthIndicator;
-        protected double HealthIndicator
+        public double HealthIndicator
         {
-            get { return healthIndicator; }
+            get { return (int)healthIndicator; }
             set
             {
                 if (value < 0)
@@ -52,13 +52,13 @@ namespace FastTapLibrary
         }
 
         public override string ImagePath { get; set; }
-        public override double CriticalDamage { get; set; }
+        protected override double CriticalDamage => 1.5 * Skills.Damage;
 
         private string name;
-        protected override string Name
+        public override string Name
         {
             get => name;
-            set
+            protected set
             {
                 if (value == "")
                     throw new Exception("Имя не может быть пустым");
@@ -67,16 +67,15 @@ namespace FastTapLibrary
             }
         }
 
-        public override Statuses Status { protected get; set; }
+        public override Statuses Status { get;  protected set; }
 
-        public Hero()
+        public Hero(string name, string imagePath)
         {
-            Name = "Герой";
+            Name = name;
             Balance = 0;
-            skills = new SkillPanel();
-            ImagePath = "";
-            HealthIndicator = skills.Health;
-            CriticalDamage = 1.05 * skills.Damage;
+            Skills = new SkillPanel();
+            ImagePath = imagePath;
+            HealthIndicator = Skills.Health;
             Status = Statuses.Active;
         }
 
@@ -100,7 +99,7 @@ namespace FastTapLibrary
 
         public override double Attack()
         {
-           return (new Random()).NextDouble() <= CriticalChance ? CriticalDamage : skills.Damage;
+           return new Random().NextDouble() <= CriticalChance ? CriticalDamage : Skills.Damage;
         }
 
         public void LevelUp(string skillName)
@@ -109,16 +108,16 @@ namespace FastTapLibrary
 
             switch (skillName)
             {
-                case "Health": skill = skills.Health; break;
-                case "Damage": skill = skills.Damage; break;
-                case "Protection": skill = skills.Protection; break;
-                case "Pet": skill = skills.Pet; break;
+                case "Health": skill = Skills.Health; break;
+                case "Damage": skill = Skills.Damage; break;
+                case "Protection": skill = Skills.Protection; break;
+                case "Pet": skill = Skills.Pet; break;
                 default:
                     throw new Exception("Запрос на повышение несуществующего навыка.");
             }
 
             Balance -= skill.Cost;
-            skills.LevelUp(skill);
+            Skills.LevelUp(skill);
         }
     }
 }

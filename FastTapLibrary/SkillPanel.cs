@@ -38,7 +38,7 @@ namespace FastTapLibrary
             {
                 { "Health", new Skill(100, 1.2) },
                 { "Damage", new Skill(16, 1.3) },
-                { "Protection", new Skill(0.05, 1.01) },
+                { "Protection", new Skill(0.1, 1.1) },
                 { "Pet", new Skill(50, 1.1) }
             };
         }

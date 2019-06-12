@@ -4,14 +4,14 @@ using System.Text;
 
 namespace FastTapLibrary
 {
-    class Game : IInformative
+    public class Game : IInformative
     {
-        //private const string heroImage;
         private int maxStage;
-        private TimeSpan totalTime;
-        //music
-        //sounds
-        private int currentStage
+        private readonly DateTime startDateTime;
+        public bool nextStage = false, prevStage = true;
+
+        private int currentStage;
+        public int CurrentStage
         {
             get { return currentStage; }
             set
@@ -29,14 +29,22 @@ namespace FastTapLibrary
         public Game()
         {
             currentStage = 1;
-            totalTime = new TimeSpan(0, 0, 1);
+            startDateTime = DateTime.Now;
         }
 
         public string GetInformation()
         {
             return $"Текущий этап: {currentStage}\n" +
                 $"Максимальный этап: {maxStage}\n" +
-                $"Время в игре: {totalTime}\n";
+                $"Время в игре: {DateTime.Now - startDateTime}\n";
+        }
+
+        public void ReturnToPrevStage()
+        {
+            if (CurrentStage != 1)
+                CurrentStage--;
+
+            //герой восстанавливает здоровье
         }
     }
 }

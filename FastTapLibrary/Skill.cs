@@ -19,7 +19,7 @@ namespace FastTapLibrary
 
         public double Cost { get; private set; }
 
-        public int Inc => (int)Math.Floor(Value * (ValueMultiplier - 1));
+        public double Inc => Math.Round(Value * (ValueMultiplier - 1), 3);
 
         /// <summary>
         /// Initializes a new instance of the class Skill with 1 level, the base price, the specified value and the multiplier.

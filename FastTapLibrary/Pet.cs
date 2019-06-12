@@ -13,9 +13,9 @@ namespace FastTapLibrary
         protected double Damage;
 
         public override string ImagePath { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override double CriticalDamage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        protected override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override Statuses Status { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        protected override double CriticalDamage { get => throw new NotImplementedException(); }
+        public override string Name { get => throw new NotImplementedException(); protected set => throw new NotImplementedException(); }
+        public override Statuses Status { get => throw new NotImplementedException(); protected set => throw new NotImplementedException(); }
 
         public Pet(string name)
         {

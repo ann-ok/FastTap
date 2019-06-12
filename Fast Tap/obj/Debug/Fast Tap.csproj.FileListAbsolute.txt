@@ -13,3 +13,8 @@ C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast T
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap.csproj.CoreCompileInputs.cache
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap.exe
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap.pdb
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\CharacterCreationWindow.g.cs
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\CharacterCreationWindow.baml
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\bin\Debug\FastTapLibrary.dll
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\bin\Debug\FastTapLibrary.pdb
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap.csproj.CopyComplete
