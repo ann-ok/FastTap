@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace FastTapLibrary
 {
@@ -9,25 +7,15 @@ namespace FastTapLibrary
     {
         private readonly Dictionary<string ,Skill> skills;
 
-        public Skill Health
-        {
-            get { return skills["Health"]; }
-        }
+        public Skill SHealth => skills["Health"];
 
-        public Skill Damage
-        {
-            get { return skills["Damage"]; }
-        }
+        public Skill SDamage => skills["Damage"];
 
-        public Skill Protection
-        {
-            get { return skills["Protection"]; }
-        }
+        public Skill SProtection => skills["Protection"];
 
-        public Skill Pet
-        {
-            get { return skills["Pet"]; }
-        }
+        public Skill SPet => skills["Pet"];
+
+        public Skill Skill { get; set; }
 
         /// <summary>
         /// Initializes a SkillPanel class object with health, damage, defense, and pet skills.
@@ -36,10 +24,10 @@ namespace FastTapLibrary
         {
             skills = new Dictionary<string, Skill>
             {
-                { "Health", new Skill(110, 1.2) },
-                { "Damage", new Skill(18, 1.3) },
-                { "Protection", new Skill(0.1, 1.1) },
-                { "Pet", new Skill(50, 1.1) }
+                { "Health", new Skill(170, 1.2) },
+                { "Damage", new Skill(20, 1.3) },
+                { "Protection", new Skill(0.01, 1.05) },
+                { "Pet", new Skill(Pet.BaseDamage, Pet.DamageMultiplier) }
             };
         }
 
@@ -54,5 +42,12 @@ namespace FastTapLibrary
         /// </summary>
         /// <param name="skill">Skill whose level you need to increase.</param>
         public void LevelUp(Skill skill) => skill.LevelUp();
+
+        /// <summary>
+        /// The method allows you to get the skill by its name.
+        /// </summary>
+        /// <param name="skillName">The skill name.</param>
+        /// <returns></returns>
+        public Skill GetValue(string skillName) => skills.Where(x => x.Key == skillName).First().Value;
     }
 }

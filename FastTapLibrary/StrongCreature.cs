@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FastTapLibrary
+﻿namespace FastTapLibrary
 {
+    /// <summary>
+    /// The abstract class describing the StrongCreature.
+    /// </summary>
     public abstract class StrongCreature : Creature, IInformative
     {
 

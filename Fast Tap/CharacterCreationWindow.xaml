@@ -15,7 +15,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label x:Name="InfoLabel" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,0,0,0" Width="368" Height="72" Foreground="White" FontSize="18" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
-        <Label Content="Изображение:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,124,0,0" Width="504" Foreground="#FFFFFDFD" FontSize="18" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
+        <Label Content="Image:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,124,0,0" Width="504" Foreground="#FFFFFDFD" FontSize="18" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
         <ListBox x:Name="HeroImage" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left" Height="336" Margin="72,163,0,0" VerticalAlignment="Top" Width="368" Padding="5" Grid.ColumnSpan="2">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -41,17 +41,18 @@
                 <Image x:Name="foxImg" Source="image/fox.png"/>
             </ListBoxItem>
         </ListBox>
-        <Label Content="Ваше имя:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,72,0,0" Width="96" Foreground="#FFFFFDFD" Grid.ColumnSpan="2" FontSize="18"/>
-        <TextBox x:Name="HeroNameTB" HorizontalAlignment="Left" Height="31" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267" Margin="173,73,0,0" Grid.ColumnSpan="2" BorderBrush="#FFB3ABAB" BorderThickness="2"/>
-        <GroupBox Header="Начальный бонус" HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="336" Margin="87,515,0,0" Grid.ColumnSpan="2" FontSize="18">
+        <Label Content="Enter your name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,72,0,0" Width="153" Foreground="#FFFFFDFD" Grid.ColumnSpan="2" FontSize="18"/>
+        <TextBox x:Name="HeroNameTB" HorizontalAlignment="Left" Height="31" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="210" Margin="230,73,0,0" Grid.ColumnSpan="2" BorderBrush="#FFB3ABAB" BorderThickness="2" MaxLength="9"/>
+        <GroupBox Header="Start bonus" HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="336" Margin="87,504,0,0" Grid.ColumnSpan="2" FontSize="18">
             <StackPanel Orientation="Vertical">
-                <RadioButton x:Name="Money" Content="Деньги" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFF9F7F7" FontSize="16" IsChecked="True"/>
-                <RadioButton x:Name="Health" Content="Здоровье" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFF9F7F7" FontSize="16"/>
-                <RadioButton x:Name="Damage" Content="Урон" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFF9F7F7" FontSize="16"/>
-                <RadioButton x:Name="Protection" Content="Защита" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFF9F7F7" FontSize="16"/>
+                <RadioButton x:Name="Money" Content="Money" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFF9F7F7" FontSize="16" IsChecked="True"/>
+                <RadioButton x:Name="Health" Content="Health" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFF9F7F7" FontSize="16"/>
+                <RadioButton x:Name="Damage" Content="Damage" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFF9F7F7" FontSize="16"/>
+                <RadioButton x:Name="Protection" Content="Protection" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFF9F7F7" FontSize="16"/>
             </StackPanel>
         </GroupBox>
-        <Button Content="Coздать" Margin="52,650,41,0" Grid.ColumnSpan="2" FontSize="18" FontWeight="Medium" Click="CreateButton_Click"/>
-        <Label x:Name="NameErrorLabel" Content="*Имя не может быть пустым" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="230,104,0,0" Width="193" Foreground="#FFFF0E0E" Grid.ColumnSpan="2" FontSize="14"/>
+        <Button Content="Create" Margin="52,650,41,0" Grid.ColumnSpan="2" FontSize="18" FontWeight="Medium" Click="CreateButton_Click"/>
+        <Label x:Name="NameErrorLabel" Content="*Name can not be empty" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="230,104,0,0" Width="193" Foreground="#FFFF0E0E" Grid.ColumnSpan="2" FontSize="14"/>
+        <Label Content="Attention, you can not change your choice!" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,622,10,0" Width="484"  FontSize="12" HorizontalContentAlignment="Center" FontWeight="Medium" Grid.ColumnSpan="2" Foreground="#FFF7F7F7"/>
     </Grid>
 </Window>

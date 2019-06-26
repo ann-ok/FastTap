@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Fast_Tap
 {
@@ -26,13 +17,13 @@ namespace Fast_Tap
         {
             InitializeComponent();
             NameErrorLabel.Visibility = Visibility.Hidden;
-            InfoLabel.Content = "Здравствуй, путник!\nВыбери свой путь...";
+            InfoLabel.Content = "Hello traveler!\nChoose your way...";
             HeroImage.SelectedIndex = 0;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (exit && MessageBox.Show("Вы уверены что хотите выйти из игры?", "Внимание!",
+            if (exit && MessageBox.Show("Are you sure you want to quit the game?", "Attention!",
                 MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.No)
                 e.Cancel = true;
             else if (exit)
@@ -62,13 +53,22 @@ namespace Fast_Tap
                 Hero = new FastTapLibrary.Hero(HeroNameTB.Text, imagePath);
 
                 if (Money.IsChecked == true)
-                    Hero.GetReward(5);
+                    Hero.GetReward(true);
                 else if (Health.IsChecked == true)
+                {
+                    Hero.Balance += Hero.Skills.SHealth.Cost;
                     Hero.LevelUp("Health");
+                }
                 else if (Damage.IsChecked == true)
+                {
+                    Hero.Balance += Hero.Skills.SDamage.Cost;
                     Hero.LevelUp("Damage");
+                }
                 else if (Protection.IsChecked == true)
+                {
+                    Hero.Balance += Hero.Skills.SProtection.Cost;
                     Hero.LevelUp("Protection");
+                }
 
                 exit = false;
                 DialogResult = true;

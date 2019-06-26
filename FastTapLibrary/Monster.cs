@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FastTapLibrary
 {
-    //размер от 150 до 300 width
     public class Monster : Creature
     {
         private const double Multiplier = 1.07;
-        private const int BaseHealth = 200, BaseDamage = 25;
-        private List<Uri> monsterImgs = new List<Uri>()
+        private const int BaseHealth = 200, BaseDamage = 23;
+
+        public static double BonusChance = 0.01;
+        public static TimeSpan AttackSpeed = TimeSpan.FromSeconds(0.5);
+
+        private readonly List<Uri> monsterImgs = new List<Uri>()
         {
             new Uri("image/monster1.png", UriKind.Relative),
             new Uri("image/monster2.png", UriKind.Relative),
@@ -21,17 +23,12 @@ namespace FastTapLibrary
             new Uri("image/monster8.png", UriKind.Relative)
         };
 
-        public double AwardMultiplier { get; protected set; } = 1;
-
-        public static double BonusChance = 0.01;
-        public static TimeSpan AttackSpeed = new TimeSpan(0, 0, 1);
-
         private double health;
         private double healthIndicator;
 
-        public Uri Appearance { get; protected set; }
+        public double AwardMultiplier { get; protected set; } = 1;
 
-        protected double Damage { get; set; }
+        public Uri Appearance { get; protected set; }
 
         public override string Name { get; protected set; }
 
@@ -39,7 +36,7 @@ namespace FastTapLibrary
 
         public double Health
         {
-            get { return health; }
+            get => (int)health;
             protected set
             {
                 health = value;
@@ -49,7 +46,7 @@ namespace FastTapLibrary
 
         public double HealthIndicator
         {
-            get { return (int)healthIndicator; }
+            get => (int)healthIndicator;
             set
             {
                 if (value < 0)
@@ -62,6 +59,8 @@ namespace FastTapLibrary
             }
         }
 
+        protected double Damage { get; set; }
+
         public Monster(int level = 1)
         {
             Name = "";
@@ -71,6 +70,10 @@ namespace FastTapLibrary
             Appearance = monsterImgs[(new Random()).Next(0, monsterImgs.Count)];
         }
 
+        /// <summary>
+        /// The method allows to find out the monster's damage.
+        /// </summary>
+        /// <returns>Damage size.</returns>
         public override double Attack() => Damage;
     }
 }

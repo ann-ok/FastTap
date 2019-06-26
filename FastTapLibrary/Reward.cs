@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FastTapLibrary
 {
@@ -12,7 +10,7 @@ namespace FastTapLibrary
         /// <summary>
         /// The field responsible for the initial bid.
         /// </summary>
-        private const int Coins = 10;
+        private const int Coins = 15;
 
         /// <summary>
         /// The field is responsible for the initial multiplier.
@@ -24,7 +22,7 @@ namespace FastTapLibrary
         /// </summary>
         /// <param name="multiplier">Multiplier.</param>
         /// <returns>The number of coins in reward.</returns>
-        public static int GetСoins(double multiplier) => (int)(Coins * multiplier);
+        public static int GetСoins(double multiplier) => (int)(Coins * 1.5 * multiplier);
 
         /// <summary>
         /// The method calculates the number of coins by the current level and multiplier.

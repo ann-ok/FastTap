@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FastTapLibrary
 {
@@ -8,22 +6,19 @@ namespace FastTapLibrary
     {
         public int coinsSpent = 0;
         private int maxNumberOfCoins = 0;
-        public SkillPanel Skills { get; private set; }
-        private int opportunityToGetAnAward = 0;
-
-        public int Level
-        {
-            get
-            {
-                int level = Skills.GetSumOfSkillLevels();
-
-                if (level % 10 == 0)
-                    opportunityToGetAnAward++;
-
-                return level;
-            }
-        }
+        private int numberOfAwardsReceived;
         private int balance;
+        private double healthIndicator;
+        private string name;
+
+        protected override double CriticalDamage => 1.5 * Skills.SDamage;
+
+        public SkillPanel Skills { get; private set; }
+
+        public int OpportunityToGetAnAward => (Level - 10 * numberOfAwardsReceived) / 10;
+
+        public int Level => Skills.GetSumOfSkillLevels();
+
         public double Balance
         {
             get { return balance; }
@@ -35,7 +30,6 @@ namespace FastTapLibrary
                     maxNumberOfCoins = balance;
             }
         }
-        private double healthIndicator;
         public double HealthIndicator
         {
             get { return (int)healthIndicator; }
@@ -51,10 +45,6 @@ namespace FastTapLibrary
             }
         }
 
-        public override string ImagePath { get; set; }
-        protected override double CriticalDamage => 1.5 * Skills.Damage;
-
-        private string name;
         public override string Name
         {
             get => name;
@@ -69,26 +59,50 @@ namespace FastTapLibrary
 
         public override Statuses Status { get; set; }
 
+        public override string ImagePath { get; set; }
+
+        public SkillPanel SkillPanel
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public Hero(string name, string imagePath)
         {
             Name = name;
             Balance = 0;
             Skills = new SkillPanel();
             ImagePath = imagePath;
-            HealthIndicator = Skills.Health;
+            HealthIndicator = Skills.SHealth;
             Status = Statuses.Active;
+            numberOfAwardsReceived = 0;
         }
 
-        public void GetReward(double multiplier)
+        /// <summary>
+        /// The method adds value to balance.
+        /// </summary>
+        /// <param name="startBonus">Allows you to determine whether the bonus is a starting reward.</param>
+        public void GetReward(bool startBonus = false)
         {
-            Balance += Reward.GetСoins(multiplier);
+            Balance += Reward.GetСoins(multiplier: Level);
+
+            if (!startBonus)
+                numberOfAwardsReceived++;
         }
 
-        public void GetReward(int level, double multiplier = 1)
-        {
-            Balance += Reward.GetСoins(level, multiplier);
-        }
+        /// <summary>
+        /// The method adds value to balance.
+        /// </summary>
+        /// <param name="level">Reward level.</param>
+        /// <param name="multiplier">Reward multiplier.</param>
+        public void GetReward(int level, double multiplier = 1) => Balance += Reward.GetСoins(level, multiplier);
 
+        /// <summary>
+        /// The method allows to get information about the hero.
+        /// </summary>
+        /// <returns>The string containing information about the hero.</returns>
         public override string GetInformation()
         {
             return $"Имя героя: {Name}\n" +
@@ -97,25 +111,24 @@ namespace FastTapLibrary
                 $"Монет потрачено: {coinsSpent}\n";
         }
 
-        public override double Attack()
+        /// <summary>
+        /// The method allows to find out the hero's damage.
+        /// </summary>
+        /// <returns>Damage size.</returns>
+        public override double Attack() => new Random().NextDouble() <= CriticalChance ? CriticalDamage : Skills.SDamage;
+
+        /// <summary>
+        /// The method increases skill.
+        /// </summary>
+        /// <param name="skillName">The skill name.</param>
+        public void LevelUp(string skillName) => LevelUp(Skills.GetValue(skillName));
+
+        /// <summary>
+        /// The method increases skill.
+        /// </summary>
+        /// <param name="skill">The skill.</param>
+        public void LevelUp(Skill skill)
         {
-           return new Random().NextDouble() <= CriticalChance ? CriticalDamage : Skills.Damage;
-        }
-
-        public void LevelUp(string skillName)
-        {
-            Skill skill;
-
-            switch (skillName)
-            {
-                case "Health": skill = Skills.Health; break;
-                case "Damage": skill = Skills.Damage; break;
-                case "Protection": skill = Skills.Protection; break;
-                case "Pet": skill = Skills.Pet; break;
-                default:
-                    throw new Exception("Запрос на повышение несуществующего навыка.");
-            }
-
             Balance -= skill.Cost;
             Skills.LevelUp(skill);
         }

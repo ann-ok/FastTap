@@ -1,5 +1,8 @@
 ﻿namespace FastTapLibrary
 {
+    /// <summary>
+    /// The abstract class describing the creature.
+    /// </summary>
     public abstract class Creature
     {
         /// <summary>

@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FastTapLibrary
 {
+    /// <summary>
+    /// The class describing the boss.
+    /// </summary>
     public class Boss : Monster
     {
-        private const double СriticalChance = 0.2;
-        private List<Uri> bossImgs = new List<Uri>()
+        private const double СriticalChance = 0.1;
+        private readonly List<Uri> bossImgs = new List<Uri>()
         {
             new Uri("image/boss1.png", UriKind.Relative),
             new Uri("image/boss2.png", UriKind.Relative),
@@ -17,22 +19,28 @@ namespace FastTapLibrary
             new Uri("image/boss6.png", UriKind.Relative),
         };
 
-        protected double CriticalDamage => 2 * Damage;
+        protected double CriticalDamage => 1.2 * Damage;
 
         public Boss(int level) : base(level)
         {
             Name = GenerateName(new Random().Next(3, 10));
-            Damage *= 1.2;
-            Health *= 1.2;
+            Damage *= 1.007;
+            Health *= 1.02;
             Appearance = bossImgs[(new Random()).Next(0, bossImgs.Count)];
-            AwardMultiplier = 1.5;
+            AwardMultiplier = 1.01;
         }
 
-        public override double Attack()
-        {
-            return new Random().NextDouble() <= СriticalChance ? CriticalDamage : Damage;
-        }
+        /// <summary>
+        /// The method allows to find out the boss's damage.
+        /// </summary>
+        /// <returns>Damage size.</returns>
+        public override double Attack() => new Random().NextDouble() <= СriticalChance ? CriticalDamage : Damage;
 
+        /// <summary>
+        /// The method allows you to create a random boss name.
+        /// </summary>
+        /// <param name="len">Name length.</param>
+        /// <returns>String which contains the name of the boss.</returns>
         private static string GenerateName(int len)
         {
             Random r = new Random();

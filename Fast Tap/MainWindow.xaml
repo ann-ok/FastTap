@@ -5,7 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fast_Tap"
         mc:Ignorable="d"
-        Title="Fast Tap" Height="840" Width="630" WindowStartupLocation="CenterScreen" Icon="Icon.ico" MinHeight="840" MinWidth="600" Foreground="#FF101213" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="Fast Tap" Height="840" Width="630" WindowStartupLocation="CenterScreen" Icon="Icon.ico" MinHeight="840" MinWidth="600" Foreground="#FF101213" Loaded="Window_Loaded" Closed="Window_Closed" Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.3"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Window.Background>
         <ImageBrush ImageSource="image/background.jpg" Stretch="UniformToFill"/>
     </Window.Background>
@@ -16,9 +25,9 @@
                 <SolidColorBrush Color="White" Opacity="0.4"/>
             </Grid.Background>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="379*"/>
-                <ColumnDefinition Width="379*"/>
-                <ColumnDefinition Width="379*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <!--Кнопка настройки-->
             <Button Grid.Column="0" 
@@ -32,12 +41,11 @@
                     x:Name="SettingsBtn" 
                     ToolTip="Настройки" 
                     Click="SettingsBtn_Click" 
-                    MouseEnter="SettingsBtn_MouseEnter"
                     IsTabStop="False">
                 <Image Width="30" Height="30" Source="image/settings.png"/>
             </Button>
             <!---->
-            <Grid Grid.Column="1" Width="140" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid Grid.Column="1" Width="140" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <!--Кнопка для того, чтобы начать уровни сначала-->
             <Button Grid.Column="0"
@@ -56,31 +64,30 @@
             </Button>
             <!--Текст - номер уровеня-->
             <Label HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="25" 
-                        VerticalContentAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="25" 
+                           VerticalContentAlignment="Center"
                    
-                        x:Name="StageLabel" 
-                        ToolTip="Текущий этап" 
-                        IsTabStop="False"/>
+                           x:Name="StageLabel" 
+                           ToolTip="Текущий этап" 
+                           IsTabStop="False"/>
             </StackPanel>
-
         </Grid>
         <!---->
             <!--Кнопка перехода на следующий уровень-->
         <Button Grid.Column="2" 
-                Margin="0, 1, 30, 0"
-                Padding="-15"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Background="Transparent" 
-                BorderBrush="Transparent" 
-                BorderThickness="0" 
+                    Margin="0, 1, 30, 0"
+                    Padding="-15"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Background="Transparent" 
+                    BorderBrush="Transparent" 
+                    BorderThickness="0" 
                     
-                x:Name="NextLvlBtn"
-                ToolTip="Перейти к следующему этапу"
-                Click="NextLvlBtn_Click"
-                IsTabStop="False">
+                    x:Name="NextLvlBtn"
+                    ToolTip="Перейти к следующему этапу"
+                    Click="NextLvlBtn_Click"
+                    IsTabStop="False">
             <Image Width="31" Height="31" Source="image/next.png"/>
         </Button>
         <!---->
@@ -149,7 +156,6 @@
                            FontSize="16" 
                            
                            x:Name="HeroNameLabel"
-                           Content="GFjksldfj"
                            IsTabStop="False" Foreground="Yellow"/>
                 <!---->
                 <!--Баланс-->
@@ -208,15 +214,6 @@
         <!---->
             <!--Правая часть-->
         <Grid Grid.Row="1" Grid.Column="1" Margin="5">
-            <!--Надпись навыки
-                <Label Grid.Column="0"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Content="Навыки" 
-                               FontSize="20" 
-                               Foreground="#FFFBF7F7"/>
-
-                -->
             <!--Панель навыков-->
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -242,19 +239,23 @@
                 <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" FontSize="16" FontWeight="ExtraLight" VerticalAlignment="Center" HorizontalAlignment="Left"
                                x:Name="NameHealthLabel" Content="Health" Foreground="#FF151111" Height="30" Margin="0,10" Width="53"/>
                 <Grid Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTip="Текущий уровень">
-                    <StackPanel  Orientation="Horizontal" Height="25" Width="42" >
+                    <StackPanel  Orientation="Horizontal">
                         <Label  Content="lvl:" FontSize="14" FontWeight="ExtraLight"/>
-                        <Label x:Name="LvlHealthLabel" FontSize="14" Content="500"/>
+                        <Label x:Name="LvlHealthLabel" FontSize="14"/>
                     </StackPanel>
                 </Grid>
-                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" ToolTip="Текущее значение" Margin="23,24,13,0" Grid.RowSpan="2" Width="78">
-                    <Label  Content="value:" FontSize="14"  VerticalAlignment="Top" FontWeight="ExtraLight" HorizontalContentAlignment="Center"/>
-                    <Label x:Name="CurrentHealthLabel"  Content="100" FontSize="14"/>
-                </StackPanel>
-                <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" ToolTip="Стоимость" Margin="16,0,5,0" Width="66">
-                    <Label x:Name="CostHealthLabel" VerticalAlignment="Center" Content="250" FontSize="16"/>
-                    <Image Width="30" Height="30"  Source="image/money.png"/>
-                </StackPanel>
+                <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"  HorizontalAlignment="Center" ToolTip="Текущее значение">
+                    <StackPanel  Orientation="Horizontal" VerticalAlignment="Top">
+                        <Label  Content="value:" FontSize="14"   FontWeight="ExtraLight"/>
+                        <Label x:Name="CurrentHealthLabel" FontSize="14"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" HorizontalAlignment="Right">
+                    <StackPanel  Orientation="Horizontal"  ToolTip="Стоимость" HorizontalAlignment="Right">
+                        <Label x:Name="CostHealthLabel" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16"/>
+                        <Image Width="30" Height="30"  Source="image/money.png"/>
+                    </StackPanel>
+                </Grid>
                 <Grid Grid.Row="0" Grid.Column="3">
                     <Button  x:Name="HealthBtn" HorizontalAlignment="Center" VerticalAlignment="Center"
                                 Width="26" 
@@ -271,7 +272,7 @@
                 <Grid Grid.Row="1" Margin="0,-1,0,0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTip="На сколько увеличится значение навыка" Grid.RowSpan="2">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="+" Foreground="#FF1CAC57" Margin="-8,0" FontSize="14"/>
-                        <Label x:Name="IncHealthLabel" Content="526" Foreground="#FF1CAC57" FontSize="14"/>
+                        <Label x:Name="IncHealthLabel" Foreground="#FF1CAC57" FontSize="14"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -292,19 +293,25 @@
                     <ColumnDefinition Width="60*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" FontSize="16" FontWeight="ExtraLight" VerticalAlignment="Center" HorizontalAlignment="Left"
-                               x:Name="NameDamageLabel" Content="Damage" Height="30" Margin="0,10" Width="67"/>
-                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" ToolTip="Текущий уровень" Margin="36,0,34,0" Width="44">
-                    <Label  Content="lvl:" VerticalAlignment="Center" FontSize="14" FontWeight="ExtraLight"/>
-                    <Label x:Name="LvlDamageLabel" VerticalAlignment="Center" FontSize="14" Content="5"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" ToolTip="Текущее значение" Margin="20,24,18,0" Grid.RowSpan="2" Width="76">
-                    <Label  Content="value:" VerticalAlignment="Center" FontSize="14" FontWeight="ExtraLight"/>
-                    <Label x:Name="CurrentDamageLabel" Content="100" VerticalAlignment="Center" FontSize="14"/>
-                </StackPanel>
-                <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" ToolTip="Стоимость" Margin="16,0,5,0" Width="66">
-                    <Label x:Name="CostDamageLabel" VerticalAlignment="Center" Content="250" FontSize="16"/>
-                    <Image Width="30" Height="30"  Source="image/money.png"/>
-                </StackPanel>
+                               x:Name="NameDamageLabel" Content="Damage" Height="33" Margin="0,10,0,7" Width="67"/>
+                <Grid Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Center" ToolTip="Текущий уровень">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                        <Label  Content="lvl:" FontSize="14" FontWeight="ExtraLight"/>
+                        <Label x:Name="LvlDamageLabel" FontSize="14"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"  HorizontalAlignment="Center" ToolTip="Текущее значение">
+                    <StackPanel  Orientation="Horizontal" VerticalAlignment="Center">
+                        <Label  Content="value:" FontSize="14" FontWeight="ExtraLight"/>
+                        <Label x:Name="CurrentDamageLabel" FontSize="14"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" HorizontalAlignment="Right" ToolTip="Стоимость">
+                    <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label x:Name="CostDamageLabel" FontSize="16"/>
+                        <Image Width="30" Height="30"  Source="image/money.png"/>
+                    </StackPanel>
+                </Grid>
                 <Grid Grid.Row="0" Grid.Column="3">
                     <Button Grid.Row="0" Grid.Column="3" x:Name="DamageBtn" HorizontalAlignment="Center" VerticalAlignment="Center"
                                 Width="26" 
@@ -321,7 +328,7 @@
                 <Grid Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTip="На сколько увеличится значение навыка" Grid.RowSpan="2" Height="26" Width="38">
                     <StackPanel Orientation="Horizontal" Margin="1,0,0,0" HorizontalAlignment="Center">
                         <Label Content="+" Foreground="#FF1CAC57" Margin="-8,0" FontSize="14"/>
-                        <Label x:Name="IncDamageLabel" Content="4" Foreground="#FF1CAC57" FontSize="14"/>
+                        <Label x:Name="IncDamageLabel" Foreground="#FF1CAC57" FontSize="14"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -343,18 +350,24 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" FontSize="16" FontWeight="ExtraLight" VerticalAlignment="Center" HorizontalAlignment="Left"
                                x:Name="NameProtectionLabel" Content="Protection" Height="30" Margin="0,10" Width="78"/>
-                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" ToolTip="Текущий уровень" Margin="38,0,32,0" Width="44">
-                    <Label  Content="lvl:" VerticalAlignment="Center" FontSize="14" FontWeight="ExtraLight"/>
-                    <Label x:Name="LvlProtectionLabel" VerticalAlignment="Center" FontSize="14" Content="5"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="22,24,16,0" ToolTip="Текущее значение" Grid.RowSpan="2" Width="76">
-                    <Label  Content="value:" VerticalAlignment="Center" FontSize="14" FontWeight="ExtraLight"/>
-                    <Label x:Name="CurrentProtectionLabel" Content="100" VerticalAlignment="Center" FontSize="14"/>
-                </StackPanel>
-                <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" ToolTip="Стоимость" Margin="18,0,3,0" Width="66">
-                    <Label x:Name="CostProtectionLabel" VerticalAlignment="Center" Content="250" FontSize="16"/>
-                    <Image Width="30" Height="30"  Source="image/money.png"/>
-                </StackPanel>
+                <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" ToolTip="Текущий уровень">
+                    <StackPanel  Orientation="Horizontal" VerticalAlignment="Center">
+                        <Label  Content="lvl:" FontSize="14" FontWeight="ExtraLight"/>
+                        <Label x:Name="LvlProtectionLabel" FontSize="14"/>
+                    </StackPanel>
+                </Grid>
+                <Grid  Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTip="Текущее значение" Grid.RowSpan="2" >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Label  Content="value:"  FontSize="14" FontWeight="ExtraLight"/>
+                        <Label x:Name="CurrentProtectionLabel" FontSize="14"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" HorizontalAlignment="Right" ToolTip="Стоимость">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label x:Name="CostProtectionLabel" FontSize="16"/>
+                        <Image Width="30" Height="30"  Source="image/money.png"/>
+                    </StackPanel>
+                </Grid>
                 <Grid Grid.Row="0" Grid.Column="3">
                     <Button Grid.Row="0" Grid.Column="3" x:Name="ProtectionBtn" HorizontalAlignment="Center" VerticalAlignment="Center"
                                 Width="26" 
@@ -371,7 +384,7 @@
                 <Grid Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTip="На сколько увеличится значение навыка" Grid.RowSpan="2">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="+" Foreground="#FF1CAC57" Margin="-8,0" FontSize="14"/>
-                        <Label x:Name="IncProtectionLabel" Content="526" Foreground="#FF1CAC57" FontSize="14"/>
+                        <Label x:Name="IncProtectionLabel" Foreground="#FF1CAC57" FontSize="14"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -392,19 +405,25 @@
                     <ColumnDefinition Width="60*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" FontSize="16" FontWeight="ExtraLight" VerticalAlignment="Center" HorizontalAlignment="Left"
-                               x:Name="NamePetLabel" Content="Pet" Height="30" Margin="0,10" Width="31"/>
-                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" ToolTip="Текущий уровень" Margin="38,0,32,0" Width="44">
-                    <Label  Content="lvl:" VerticalAlignment="Center" FontSize="14" FontWeight="ExtraLight"/>
-                    <Label x:Name="LvlPetLabel" VerticalAlignment="Center" FontSize="14" Content="5"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="22,24,16,0" ToolTip="Текущее значение" Grid.RowSpan="2" Width="76">
-                    <Label  Content="value:" VerticalAlignment="Center" FontSize="14" FontWeight="ExtraLight"/>
-                    <Label x:Name="CurrentPetLabel" Content="100" VerticalAlignment="Center" FontSize="14"/>
-                </StackPanel>
-                <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" ToolTip="Стоимость" Margin="16,0,5,0" Width="66">
-                    <Label x:Name="CostPetLabel" VerticalAlignment="Center" Content="250" FontSize="16"/>
-                    <Image Width="30" Height="30"  Source="image/money.png"/>
-                </StackPanel>
+                               x:Name="NamePetLabel" Content="Pet damage" Height="33" Margin="0,10,0,7" Width="92" Grid.ColumnSpan="2"/>
+                <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" ToolTip="Текущий уровень">
+                    <StackPanel  Orientation="Horizontal" VerticalAlignment="Center">
+                        <Label  Content="lvl:"  FontSize="14" FontWeight="ExtraLight"/>
+                        <Label x:Name="LvlPetLabel" FontSize="14"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1"  Grid.Row="1" HorizontalAlignment="Center" ToolTip="Текущее значение" Grid.RowSpan="2">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Label  Content="value:"  FontSize="14" FontWeight="ExtraLight"/>
+                        <Label x:Name="CurrentPetLabel" FontSize="14"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" HorizontalAlignment="Right" ToolTip="Стоимость">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Label x:Name="CostPetLabel" FontSize="16"/>
+                        <Image Width="30" Height="30"  Source="image/money.png"/>
+                    </StackPanel>
+                </Grid>
                 <Grid Grid.Row="0" Grid.Column="3">
                     <Button Grid.Row="0" Grid.Column="3" x:Name="PetBtn" HorizontalAlignment="Center" VerticalAlignment="Center"
                                 Width="24" 
@@ -418,10 +437,10 @@
                         <Image Source="image/plus.png"/>
                     </Button>
                 </Grid>
-                <Grid Grid.Row="1" Margin="0,-1,0,0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTip="На сколько увеличится значение навыка" Grid.RowSpan="2" Height="26" Width="38">
-                    <StackPanel Orientation="Horizontal" Margin="1,0,0,0" HorizontalAlignment="Center">
+                <Grid Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTip="На сколько увеличится значение навыка" Grid.RowSpan="2" Height="26">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="+" Foreground="#FF1CAC57" Margin="-8,0" FontSize="14"/>
-                        <Label x:Name="IncPetLabel" Content="526" Foreground="#FF1CAC57" FontSize="14"/>
+                        <Label x:Name="IncPetLabel" Foreground="#FF1CAC57" FontSize="14"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -434,9 +453,8 @@
             <!--Место для монстра-->
             <Grid x:Name="MonsterField" MouseLeftButtonUp="MonsterField_MouseLeftButtonUp" Background="Transparent">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="4*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -445,9 +463,14 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+
                 <!--Фигурка монстра-->
-                <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3">
-                    <StackPanel Orientation="Vertical">
+                <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Vertical" Grid.Row="0">
                         <Grid>
                             <ProgressBar 
                                  Margin="30 10"
@@ -475,29 +498,33 @@
                                
                    
                                x:Name="MonsterNameLabel"
-                               Content="Аня"
                                IsTabStop="False" Foreground="Yellow" ForceCursor="True" FontWeight="Black"/>
-                        <Grid Margin="60, 0" Height="250" >
-                            <Image x:Name="MonsterImg" Width="300" Height="321" Margin="-26,-30,-21,-41" VerticalAlignment="Bottom" MinHeight="150" MinWidth="150" MaxWidth="300" MaxHeight="400"/>
-                        </Grid>
                     </StackPanel>
+                    <Grid Margin="80 0" Grid.Row="1" VerticalAlignment="Bottom">
+                        <Image x:Name="MonsterImg" MinHeight="150" MinWidth="150" MaxWidth="300" MaxHeight="400"/>
+                    </Grid>
                 </Grid>
                 <!--Фигурка игрока-->
-                <Image Grid.Row="2" Grid.Column="2" Margin="0,20,0,-20" Source="image/heroFigure.png"/>
+                <Image Grid.Row="1" Grid.Column="2" Margin="0,0,0,-20" Source="image/heroFigure.png"/>
                 <!---->
-            <!--Фигурка питомца-->
-                <Image Grid.Row="2" 
-                   Grid.Column="3" 
-                   Height="130" 
-                   Width="130" 
-                   VerticalAlignment="Top"
-                   Source="image/petFigure.png"/>
-                <Button Grid.Row="2"
-                    Grid.Column="3"
-                    Height="35"
+                <Grid Grid.Column="3" Grid.RowSpan="2" VerticalAlignment="Bottom">
+                    
+                <!--Фигурка питомца-->
+                <StackPanel Orientation="Vertical" Margin="0 0 0 60">
+                    <Label HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="16" 
+                                Margin="0 0 0 -20"
+                               
+                           x:Name="PetNameLabel"
+                               IsTabStop="False" Foreground="Yellow" ForceCursor="True" FontWeight="Black"/>
+                    <Image Height="130" Width="130" Source="image/petFigure.png"/>
+                </StackPanel>
+
+                <Button Height="35"
                     Width="80"
-                    Margin="20,0,0,60"
-                            
+                    Margin="0,0,0,60"
+                    Visibility="Hidden"
                     x:Name="BuyPetBtn"
                     ToolTip="Купить питомца"
                     Click="BuyPetBtn_Click"
@@ -513,7 +540,19 @@
                         <Image  Width="25" Height="25" Margin="5" Source="/image/funds.png"/>
                     </StackPanel>
                 </Button>
-                <!---->
+                <Image x:Name="PetFireImg" Source="image/fire.png" Margin="32,7,78,126" RenderTransformOrigin="0.5,0.5" Opacity="0.9" Visibility="Hidden">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-34.05"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Label x:Name="InfoDeath" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Content="" VerticalAlignment="Center" Margin="10,74,10,42" Grid.ColumnSpan="5" Height="34" Width="602" FontSize="18" Foreground="White" Grid.Row="1"/>
+            <!---->
         </Grid>
     </DockPanel>
 </Window>

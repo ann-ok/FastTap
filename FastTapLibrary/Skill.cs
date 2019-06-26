@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FastTapLibrary
 {
@@ -19,7 +17,7 @@ namespace FastTapLibrary
 
         public double Cost { get; private set; }
 
-        public double Inc => Math.Round(Value * (ValueMultiplier - 1), 3);
+        public double GetInc() => Math.Round(Value * (ValueMultiplier - 1), 3);
 
         /// <summary>
         /// Initializes a new instance of the class Skill with 1 level, the base price, the specified value and the multiplier.
@@ -44,6 +42,6 @@ namespace FastTapLibrary
             Cost *= CostMultiplier;
         }
 
-        public static implicit operator double(Skill skill) => skill.Value;
+        public static implicit operator int(Skill skill) => (int)skill.Value;
     }
 }

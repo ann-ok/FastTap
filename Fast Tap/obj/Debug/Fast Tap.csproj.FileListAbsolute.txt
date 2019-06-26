@@ -18,3 +18,7 @@ C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast T
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\bin\Debug\FastTapLibrary.dll
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\bin\Debug\FastTapLibrary.pdb
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\Fast Tap.csproj.CopyComplete
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\PetWindow.g.cs
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\PetWindow.baml
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\SettingWindow.g.cs
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\Fast Tap\obj\Debug\SettingWindow.baml

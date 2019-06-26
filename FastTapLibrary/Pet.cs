@@ -1,38 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FastTapLibrary
 {
-    class Pet : StrongCreature
+    public class Pet : StrongCreature
     {
-        protected const int Price = 2000;
+        public static int Price = 500;
+        public static TimeSpan AttackSpeed = TimeSpan.FromSeconds(3);
+        public static double DamageMultiplier = 1.3;
+        public static double BaseDamage = 50;
 
-        protected TimeSpan AttackSpeed;
+        public double Damage { private get; set; }
 
-        protected double Damage;
+        public override string ImagePath { get; set; }
 
-        public override string ImagePath { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        protected override double CriticalDamage { get => throw new NotImplementedException(); }
-        public override string Name { get => throw new NotImplementedException(); protected set => throw new NotImplementedException(); }
-        public override Statuses Status { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        protected override double CriticalDamage => 1.1 * Damage;
+
+        public override string Name { get; protected set; }
+
+        public override Statuses Status { get; set; } = Statuses.Active;
 
         public Pet(string name)
         {
             Name = name;
-            Status = Statuses.Inactive;
+            Damage = BaseDamage;
         }
 
-        public void ChangeStatus() => Status = Status == Statuses.Inactive ? Statuses.Active : Statuses.Inactive;
+        /// <summary>
+        /// The method allows to get information about the pet.
+        /// </summary>
+        /// <returns>The string containing information about the pet.</returns>
+        public override string GetInformation() => $"Имя питомца: {Name}\n" +
+                $"Cкорость атаки: раз в {AttackSpeed.Seconds.ToString()} секунды\n";
 
-        public override string GetInformation()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override double Attack()
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// The method allows to find out the pet's damage.
+        /// </summary>
+        /// <returns>Damage size.</returns>
+        public override double Attack() => new Random().NextDouble() <= CriticalChance ? CriticalDamage : Damage;
     }
 }

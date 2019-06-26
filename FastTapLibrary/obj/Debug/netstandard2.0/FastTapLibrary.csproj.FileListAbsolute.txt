@@ -1,9 +1,9 @@
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\FastTapLibrary\bin\Debug\netstandard2.0\FastTapLibrary.deps.json
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\FastTapLibrary\bin\Debug\netstandard2.0\FastTapLibrary.dll
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\FastTapLibrary\bin\Debug\netstandard2.0\FastTapLibrary.pdb
-C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\FastTapLibrary\obj\Debug\netstandard2.0\FastTapLibrary.csprojAssemblyReference.cache
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\FastTapLibrary\obj\Debug\netstandard2.0\FastTapLibrary.csproj.CoreCompileInputs.cache
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\FastTapLibrary\obj\Debug\netstandard2.0\FastTapLibrary.AssemblyInfoInputs.cache
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\FastTapLibrary\obj\Debug\netstandard2.0\FastTapLibrary.AssemblyInfo.cs
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\FastTapLibrary\obj\Debug\netstandard2.0\FastTapLibrary.dll
 C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\FastTapLibrary\obj\Debug\netstandard2.0\FastTapLibrary.pdb
+C:\Users\Anna\YandexDisk\Учеба\Учебная практика\Part3\FastTapLibrary\obj\Debug\netstandard2.0\FastTapLibrary.csprojAssemblyReference.cache

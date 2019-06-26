@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FastTapLibrary
 {
+    /// <summary>
+    /// The class describing the bonus boss.
+    /// </summary>
     public class BonusBoss : Boss
     {
         public BonusBoss(int level): base(level)
